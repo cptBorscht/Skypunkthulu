@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "type": "graph",
+      "ctime": 1787191177144,
+      "title": "Quests and NPCs",
+      "options": {
+        "collapse-filter": true,
+        "search": "path: \"Active\" OR path: \"NPCs\"",
+        "showTags": true,
+        "showAttachments": false,
+        "hideUnresolved": false,
+        "showOrphans": true,
+        "collapse-color-groups": true,
+        "colorGroups": [
+          {
+            "query": "path: \"Active\"",
+            "color": {
+              "a": 1,
+              "rgb": 14701138
+            }
+          },
+          {
+            "query": "path: NPCs  ",
+            "color": {
+              "a": 1,
+              "rgb": 5394398
+            }
+          }
+        ],
+        "collapse-display": true,
+        "showArrow": false,
+        "textFadeMultiplier": -1.4,
+        "nodeSizeMultiplier": 1.50712506767731,
+        "lineSizeMultiplier": 1.03171629669735,
+        "collapse-forces": true,
+        "centerStrength": 0,
+        "repelStrength": 4.91174878180834,
+        "linkStrength": 0.966323768272875,
+        "linkDistance": 249,
+        "scale": 0.13357001550657113,
+        "close": true
+      }
+    }
+  ]
+}

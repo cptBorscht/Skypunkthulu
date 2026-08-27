@@ -1,0 +1,37 @@
+/* Calendarium: stack event indicators vertically */
+
+.dots-container .dot-container
+{
+    flex-flow: column nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    width: 100% !important;
+    min-height: 30px !important;
+    line-height: normal !important;
+}
+
+/* * Calendarium puts the category color directly on the SVG circle. * Keep that circle, but stretch it horizontally into a bar. */
+.dots-container .dot
+{
+    width: 80% !important;
+    height: 10px !important;
+    min-width: 6px !important;
+    min-height: 5px !important;
+    overflow: visible !important;
+    preserve-aspect-ratio: none;
+}
+
+/* turn the 4px-wide circle into roughly a 32px-wide pill */
+.dots-container .dot circle
+{
+    transform: scaleX(6) scaleY(2);
+    transform-origin: center;
+    transform-box: fill-box;
+    color: rgba(255,200, 255, .75);
+    filter:
+    brightness(1.12)
+    saturate(1.15)
+    drop-shadow(0 -0.8px 0 rgba(255,255,255,.65))
+    drop-shadow(0 .8px 0 rgba(100,56,56,.35));
+}

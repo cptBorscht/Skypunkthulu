@@ -1,0 +1,241 @@
+{
+  "nodePositions": [
+    {
+      "id": "NPCs/Alonzo Montemerrat.md",
+      "x": 576.7649536132812,
+      "y": 1352.4246826171875
+    },
+    {
+      "id": "NPCs/Bardle Shanksworth.md",
+      "x": -80.30009460449219,
+      "y": -56.79707717895508
+    },
+    {
+      "id": "NPCs/Cyndil _Jessie_ Trueshot.md",
+      "x": 592.6211547851562,
+      "y": -254.27407836914062
+    },
+    {
+      "id": "NPCs/Doc Furn.md",
+      "x": 451.5816345214844,
+      "y": 1075.507080078125
+    },
+    {
+      "id": "NPCs/Dream-Priestess Fiona.md",
+      "x": 791.3932495117188,
+      "y": 488.7646179199219
+    },
+    {
+      "id": "NPCs/Elba Zabili.md",
+      "x": 840.2446899414062,
+      "y": 1137.376708984375
+    },
+    {
+      "id": "NPCs/Gehir Greencloak.md",
+      "x": -312.98052978515625,
+      "y": 770.561279296875
+    },
+    {
+      "id": "NPCs/Goldy Lafferty.md",
+      "x": 1030.4495849609375,
+      "y": -770.299560546875
+    },
+    {
+      "id": "NPCs/Granny Smith.md",
+      "x": 998.2722778320312,
+      "y": -430.43035888671875
+    },
+    {
+      "id": "NPCs/Gwando Psychadelic.md",
+      "x": 259.775634765625,
+      "y": -1329.1607666015625
+    },
+    {
+      "id": "NPCs/High Magister Miranda Montemerrat.md",
+      "x": 178.2288818359375,
+      "y": 1291.2740478515625
+    },
+    {
+      "id": "NPCs/Hox.md",
+      "x": 607.2676391601562,
+      "y": -1194.010498046875
+    },
+    {
+      "id": "NPCs/Jaleeda D'soun.md",
+      "x": 1271.017578125,
+      "y": -330.786865234375
+    },
+    {
+      "id": "NPCs/Kibana Kubernetes.md",
+      "x": 1357.6202392578125,
+      "y": -777.3074340820312
+    },
+    {
+      "id": "NPCs/Lady Kree.md",
+      "x": 1070.3165283203125,
+      "y": 503.779052734375
+    },
+    {
+      "id": "NPCs/Redrick, Son of Redrickson.md",
+      "x": 843.0104370117188,
+      "y": -606.3003540039062
+    },
+    {
+      "id": "NPCs/Valentine Lafferty.md",
+      "x": 1385.205810546875,
+      "y": -502.1390075683594
+    },
+    {
+      "id": "NPCs/Bernice Weekend AKA Smarts.md",
+      "x": 457.0419921875,
+      "y": -674.2293701171875
+    },
+    {
+      "id": "Active/Espionage in Izel.md",
+      "x": -21.09185218811035,
+      "y": -486.8229675292969
+    },
+    {
+      "id": "Izel",
+      "x": 197.5980987548828,
+      "y": -319.73919677734375
+    },
+    {
+      "id": "#SideQuest",
+      "x": -364.8661804199219,
+      "y": -553.4096069335938
+    },
+    {
+      "id": "Active/Find Kovo's Hidden Stash.md",
+      "x": 699.71240234375,
+      "y": -37.72166442871094
+    },
+    {
+      "id": "Active/Fuck Off and Start A Zoo.md",
+      "x": -741.8789672851562,
+      "y": -583.4874877929688
+    },
+    {
+      "id": "Active/Mysterious Bal Bal Deck.md",
+      "x": -495.875244140625,
+      "y": -160.05885314941406
+    },
+    {
+      "id": "Active/Orphan Crushing Machine.md",
+      "x": 254.28982543945312,
+      "y": 788.8075561523438
+    },
+    {
+      "id": "#MainQuest",
+      "x": 469.1211242675781,
+      "y": 542.44091796875
+    },
+    {
+      "id": "Active/Project Joining.md",
+      "x": 53.907894134521484,
+      "y": 639.7300415039062
+    },
+    {
+      "id": "Beakon",
+      "x": 281.0895080566406,
+      "y": 543.1417846679688
+    },
+    {
+      "id": "Kurvan",
+      "x": 161.91921997070312,
+      "y": 389.72528076171875
+    },
+    {
+      "id": "Active/Read Fiona's Books.md",
+      "x": 1058.2503662109375,
+      "y": 846.38818359375
+    },
+    {
+      "id": "Active/Research the Occulare.md",
+      "x": 379.6096496582031,
+      "y": -108.84011840820312
+    },
+    {
+      "id": "Active/The Cult of Marcus.md",
+      "x": 185.80050659179688,
+      "y": -906.8806762695312
+    },
+    {
+      "id": "Active/Uncover Your Origins.md",
+      "x": 521.838134765625,
+      "y": 198.8313446044922
+    },
+    {
+      "id": "Active/Unlock the Brass Capsule.md",
+      "x": 890.16845703125,
+      "y": 241.90538024902344
+    },
+    {
+      "id": "Active/Unlock the Power to Stop Time.md",
+      "x": -326.5056457519531,
+      "y": -900.1556396484375
+    },
+    {
+      "id": "Hat of Fishing",
+      "x": -326.1795654296875,
+      "y": -1190.4512939453125
+    },
+    {
+      "id": "Active/Where's the Collosus Going.md",
+      "x": -173.2155303955078,
+      "y": 230.93968200683594
+    },
+    {
+      "id": "Active/Why Are They After Elba.md",
+      "x": 708.431396484375,
+      "y": 800.3661499023438
+    }
+  ],
+  "pinnedNodes": [],
+  "globalOptions": {
+    "collapse-filter": false,
+    "search": "path: \"Active\" OR path: \"NPCs\"",
+    "showTags": true,
+    "showAttachments": false,
+    "hideUnresolved": false,
+    "showOrphans": true,
+    "collapse-color-groups": false,
+    "colorGroups": [
+      {
+        "query": "path: \"Active\"",
+        "color": {
+          "a": 1,
+          "rgb": 12725806
+        }
+      },
+      {
+        "query": "path: NPCs  ",
+        "color": {
+          "a": 1,
+          "rgb": 3092116
+        }
+      }
+    ],
+    "collapse-display": false,
+    "showArrow": false,
+    "textFadeMultiplier": -1.4,
+    "nodeSizeMultiplier": 1.50712506767731,
+    "lineSizeMultiplier": 1.03171629669735,
+    "collapse-forces": false,
+    "centerStrength": 0,
+    "repelStrength": 0,
+    "linkStrength": 0,
+    "linkDistance": 242,
+    "scale": 0.12483473966695578,
+    "close": true
+  },
+  "workspacesGraphData": {},
+  "automaticallyRestoreNodePositions": true,
+  "enableSaveOptions": true,
+  "enableWorkspaces": true,
+  "timesShowedRestoredNotification": 5,
+  "showSaveNotification": true,
+  "enableGraphSimulationCommands": false,
+  "enableAutoSave": true,
+  "autoSaveIntervalMinutes": 1
+}

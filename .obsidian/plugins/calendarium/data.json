@@ -1,0 +1,713 @@
+{
+  "autoParse": true,
+  "calendars": [
+    {
+      "name": "Skyaian",
+      "description": "",
+      "id": "ID_c8f93abacb9b",
+      "showIntercalarySeparately": true,
+      "static": {
+        "incrementDay": false,
+        "firstWeekDay": 0,
+        "overflow": true,
+        "weekdays": [
+          {
+            "type": "day",
+            "name": "Monday",
+            "id": "ID_4ba8f93998b8"
+          },
+          {
+            "type": "day",
+            "name": "Trustday",
+            "id": "ID_dbebaac9483a"
+          },
+          {
+            "type": "day",
+            "name": "Wernsday",
+            "id": "ID_7b3ab968fbb9"
+          },
+          {
+            "type": "day",
+            "name": "Saturnday",
+            "id": "ID_4a6bb81b9a38"
+          },
+          {
+            "type": "day",
+            "name": "Sunsday",
+            "id": "ID_f8f86b59aaaa"
+          }
+        ],
+        "months": [
+          {
+            "type": "month",
+            "name": "Monsoon Jan",
+            "length": 20,
+            "id": "ID_190b995b7a08",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Monsoon Feb",
+            "length": 20,
+            "id": "ID_bb7838084b39",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Monsoon Mar",
+            "length": 20,
+            "id": "ID_1869c98a7a09",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Monsoon Aper",
+            "length": 20,
+            "id": "ID_6acaab9afa4a",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Monsoon Mai",
+            "length": 20,
+            "id": "ID_1ad93a882949",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Dry Jan",
+            "length": 20,
+            "id": "ID_28793b58793b",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Dry Feb",
+            "length": 20,
+            "id": "ID_6b9af9c8ab59",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Dry Mar",
+            "length": 20,
+            "id": "ID_0bf8aa596b3b",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Dry Aper",
+            "length": 20,
+            "id": "ID_d80ad98b89bb",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Dry Mai",
+            "length": 20,
+            "id": "ID_4b0abb5bb9ba",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Autumn Jan",
+            "length": 20,
+            "id": "ID_7b9988fbe879",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Autumn Feb",
+            "length": 20,
+            "id": "ID_689b9be8f83a",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Autumn Mar",
+            "length": 20,
+            "id": "ID_082a6bf9fa99",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Autumn Aper",
+            "length": 20,
+            "id": "ID_0b8bea592808",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Autumn Mai",
+            "length": 20,
+            "id": "ID_4a38cb8b693b",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Winter Jan",
+            "length": 20,
+            "id": "ID_d91be9d9682a",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Winter Feb",
+            "length": 20,
+            "id": "ID_b9e9ab6988b8",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Winter Mar",
+            "length": 20,
+            "id": "ID_29198a3a5a59",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Winter Aper",
+            "length": 20,
+            "id": "ID_485b493a58aa",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Winter Mai",
+            "length": 20,
+            "id": "ID_8a5b1ac97909",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Spring Jan",
+            "length": 20,
+            "id": "ID_bb3acb5b08eb",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Spring Feb",
+            "length": 20,
+            "id": "ID_48d95beb698a",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Spring Mar",
+            "length": 20,
+            "id": "ID_1b2bc8eb9b38",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Spring Aper",
+            "length": 20,
+            "id": "ID_68587879b87b",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Spring Mai",
+            "length": 20,
+            "id": "ID_9b08a8e9195a",
+            "interval": 1,
+            "offset": 0
+          }
+        ],
+        "moons": [],
+        "displayMoons": true,
+        "displayDayNumber": false,
+        "leapDays": [],
+        "eras": [
+          {
+            "id": "ID_2a98890a194a",
+            "type": "era",
+            "name": "Post Cataclysm",
+            "description": "",
+            "format": "{{era_name}}",
+            "endsYear": false,
+            "isEvent": false,
+            "category": null,
+            "isStartingEra": true,
+            "date": {
+              "day": 13,
+              "month": 0,
+              "year": 1223
+            }
+          }
+        ],
+        "padMonths": 2,
+        "padDays": 2
+      },
+      "seasonal": {
+        "seasons": [
+          {
+            "id": "ID_eab9d8ab5b4b",
+            "name": "Monsoon",
+            "type": "Periodic",
+            "color": "#adc2ff",
+            "duration": 100,
+            "peak": 0,
+            "weatherOffset": 56,
+            "weatherPeak": 5,
+            "kind": "None"
+          },
+          {
+            "id": "ID_38caea18b899",
+            "name": "Dry",
+            "type": "Periodic",
+            "color": "#f2e87d",
+            "duration": 100,
+            "peak": 0,
+            "weatherOffset": 56,
+            "weatherPeak": 5,
+            "kind": "None"
+          },
+          {
+            "id": "ID_899a0a08fbfb",
+            "name": "Autumn",
+            "type": "Periodic",
+            "color": "#ee7777",
+            "duration": 100,
+            "peak": 0,
+            "weatherOffset": 56,
+            "weatherPeak": 5,
+            "kind": "None"
+          },
+          {
+            "id": "ID_5a685aea68ca",
+            "name": "Winter",
+            "type": "Periodic",
+            "color": "#724988",
+            "duration": 100,
+            "peak": 0,
+            "weatherOffset": 56,
+            "weatherPeak": 5,
+            "kind": "None"
+          },
+          {
+            "id": "ID_f91a8a5aaaba",
+            "name": "Spring",
+            "type": "Periodic",
+            "color": "#7af778",
+            "duration": 100,
+            "peak": 0,
+            "weatherOffset": 56,
+            "weatherPeak": 5,
+            "kind": "None"
+          }
+        ],
+        "offset": 0,
+        "type": "Periodic",
+        "displayColors": true,
+        "interpolateColors": true,
+        "weather": {
+          "enabled": false,
+          "seed": -911264596,
+          "tempUnits": "Imperial",
+          "windUnits": "Imperial",
+          "primaryWindDirection": "E",
+          "freezingPoint": 0
+        }
+      },
+      "locations": {
+        "locations": [],
+        "defaultLocation": ""
+      },
+      "current": {
+        "day": 11,
+        "month": 0,
+        "year": 1224
+      },
+      "events": [
+        {
+          "name": "Arrived At Bernice's",
+          "description": null,
+          "date": {
+            "day": 9,
+            "month": 24,
+            "year": 1223
+          },
+          "id": "ID_d9c9a90b7b59",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "Ventissa Independence Week",
+          "description": null,
+          "date": {
+            "day": 6,
+            "month": 23,
+            "year": 1223
+          },
+          "id": "ID_c8b89bea4949",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Range",
+          "end": {
+            "day": 10,
+            "month": 23,
+            "year": 1223
+          }
+        },
+        {
+          "name": "Collossus Unleashed!",
+          "description": "On this day, Greencloak summoned the Collossus; Keid's former mentor Shanksworth attempted to take control of the Collossus for his own aims.  Both only partly succeeded, the Collossus now acting on its own will, the term used loosely.  Greencloak was rescued (read: skyhooked) away by Doc Furn.",
+          "date": {
+            "day": 3,
+            "month": 24,
+            "year": 1223
+          },
+          "id": "ID_0b8b9b0b58bb",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "Mud's Dawn",
+          "description": "Skyaian Wide Celebration of the Dawn of the Monsoon Season.  Because of the Strangeness of Biomes and Eldritch Stabilizing Entities, the recurrent rains are relied upon by most cities which have some version of vast reservoirs which are filled for the remainder of the year.",
+          "date": {
+            "day": 1,
+            "month": 0,
+            "year": [
+              1224,
+              9999
+            ]
+          },
+          "id": "ID_58780bd9cb5b",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "Cleansing Week",
+          "description": "Twilight Temple enforces fasting and other gifts of worship to close out the Monsoon Season, Skyaia-wide.",
+          "date": {
+            "day": 16,
+            "month": 4,
+            "year": 1224
+          },
+          "id": "ID_f9bafb4bdacb",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Range",
+          "end": {
+            "day": 20,
+            "month": 4,
+            "year": 1224
+          }
+        },
+        {
+          "name": "The Leaning Begins",
+          "description": "A once every 8 years Mecca is coming, those most devout to the Eldritch Society and their Patron Eldritch Entities converges on Shreet, and walks for a month outside any stable bubble.  The way is long, unforgiving, and is a single long steep incline so everyone appears to be leaning forrward as they march.",
+          "date": {
+            "day": 6,
+            "month": 5,
+            "year": [
+              1224,
+              9999
+            ]
+          },
+          "id": "ID_1a1a797b986b",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "The Leaning Ends",
+          "description": "A once every 8 years Mecca is coming, those most devout to the Eldritch Society and their Patron Eldritch Entities converges on Shreet, and walks for a month outside any stable bubble.  The way is long, unforgiving, and is a single long steep incline so everyone appears to be leaning forrward as they march.  At this date, the pilgrims should be back, and a great ceremony will commence the following day.",
+          "date": {
+            "day": 6,
+            "month": 6,
+            "year": [
+              1224,
+              99999
+            ]
+          },
+          "id": "ID_4b487b0b98fb",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "The Great Stand",
+          "description": "A ceremony by the surviving Pilgrims in Shreet upon their return. Only Pilgrims may attend, nothing is known about what happens during this ceremony.  Many pilgrims walk away having lost much of their sanity.",
+          "date": {
+            "day": 7,
+            "month": 6,
+            "year": [
+              1224,
+              9999
+            ]
+          },
+          "id": "ID_292b6bc9fb08",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "Worship Day",
+          "description": "A Simple Day of Worship, an attempt to share between all sects and factions a day where the particulars can be set aside and we can revel in the things accomplished by all in the service of humanity and eldritch-kind.",
+          "date": {
+            "day": 8,
+            "month": 7,
+            "year": [
+              1224,
+              9999
+            ]
+          },
+          "id": "ID_9abbb8996b48",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "Frost's Dawn",
+          "description": "Skyaia-wide, this day is used to join together in preparation for brutal winter conditions.  Preparations from the Dry months are taken out of storage, and other things are done to celebrate stoicism and endurance.",
+          "date": {
+            "day": 15,
+            "month": 16,
+            "year": [
+              1224,
+              9999
+            ]
+          },
+          "id": "ID_f8a9ea5a596a",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "Kom Kom Lau",
+          "description": "A holiday from Druun which got passed around everywhere b/c it was so much fun.  Everyone dons masks and party rocks.  It's steampunk cthulu mardi gras.",
+          "date": {
+            "day": 3,
+            "month": 20,
+            "year": [
+              1224,
+              9999
+            ]
+          },
+          "id": "ID_f93b8b7a496a",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "New Year's Eve",
+          "description": "Marking the end of Spring and the beginning of the Monsoon months which are said to \"begin\" the year anew.  The unnatural cycles of Skyaia post-Cataclysm making it mostly arbitrary which boundary to assign.  It was seen early on as a good omen for the rainy months to celebrate as their arrival approached.  This seed of superstition carries on to this day.",
+          "date": {
+            "day": 20,
+            "month": 24,
+            "year": [
+              1224,
+              9999
+            ]
+          },
+          "id": "ID_79fbda7afb38",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Recurring"
+        },
+        {
+          "name": "Arrived at Goa Zo",
+          "description": null,
+          "date": {
+            "day": 10,
+            "month": 0,
+            "year": 1224
+          },
+          "id": "ID_29396a8afa8b",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "Colossus Reaches Celestia",
+          "description": "Unaltered, Colossus will be diverted at Furn towards Celestia ",
+          "date": {
+            "day": 3,
+            "month": 2,
+            "year": 1224
+          },
+          "id": "ID_086b4a3a982b",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "Colossus Reaches Furn",
+          "description": "Colossus will reach Furn and rumors will start spreading more intensely.",
+          "date": {
+            "day": 13,
+            "month": 1,
+            "year": 1224
+          },
+          "id": "ID_bbba390be93a",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "Hired Gwando",
+          "description": null,
+          "date": {
+            "day": 12,
+            "month": 24,
+            "year": 1223
+          },
+          "id": "ID_dbfb4b8a8b8b",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        },
+        {
+          "name": "[DM] Doc Furn Arrives",
+          "description": "Doc Furn arrives at Goa Zo.",
+          "date": {
+            "day": 1,
+            "month": 1,
+            "year": 1224
+          },
+          "id": "ID_88ba28895a19",
+          "note": null,
+          "category": null,
+          "sort": {
+            "timestamp": 5e-324,
+            "order": ""
+          },
+          "type": "Date"
+        }
+      ],
+      "categories": [],
+      "path": [],
+      "supportInlineEvents": false,
+      "inlineEventTag": "#inline-events",
+      "dateFormat": "MM-DD-YYYY"
+    }
+  ],
+  "configDirectory": null,
+  "dailyNotes": false,
+  "dateFormat": "YYYY-MM-DD",
+  "defaultCalendar": "ID_c8f93abacb9b",
+  "eventPreview": true,
+  "exit": {
+    "saving": false,
+    "event": false,
+    "calendar": false,
+    "savingEvent": false
+  },
+  "eventFrontmatter": false,
+  "parseDates": false,
+  "version": {
+    "major": 2,
+    "minor": 1,
+    "patch": 0,
+    "beta": null
+  },
+  "debug": false,
+  "askedToMoveFC": false,
+  "askedAboutSync": false,
+  "syncBehavior": "Ask",
+  "inlineEventsTag": null,
+  "paths": [
+    [
+      "/",
+      "DEFAULT"
+    ],
+    [
+      "deck/dnd/cthulu/calendar",
+      "DEFAULT"
+    ]
+  ]
+}

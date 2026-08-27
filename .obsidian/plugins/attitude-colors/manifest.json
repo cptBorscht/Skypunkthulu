@@ -1,0 +1,9 @@
+{
+	"id": "attitude-colors",
+	"name": "Attitude Colors",
+	"version": "1.1.1",
+	"minAppVersion": "1.0.0",
+	"description": "Tints File Explorer note titles from a frontmatter 'attitude' value (0-100 mapped red to green).",
+	"author": "Oleg",
+	"isDesktopOnly": false
+}
