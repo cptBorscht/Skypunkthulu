@@ -3,6 +3,7 @@ shop: Eldritch Society Smiths
 sources: [ESS]
 stock: 0
 markup: 1
+dg-publish: true
 ---
 
 Back-alley gunsmiths who file sigils where rifling should be.

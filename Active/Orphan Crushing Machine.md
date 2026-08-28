@@ -1,3 +1,8 @@
+---
+dg-publish: true
+completed: false
+---
+
 
 #MainQuest 
 

@@ -1,3 +1,8 @@
+---
+dg-publish: true
+completed: false
+---
+
 #MainQuest 
 
 Sure, [[Elba Zabili]] glows at night while she is in the Dreamlands, meaning she's doing things that are sure to have direct and real impacts in the waking world, but why are they after her though?  The effects can be benign or catastrophic, only much deeper knowledge will tell for certain.

@@ -6,6 +6,7 @@ rarities: [very rare, legendary]
 excludeMechanics: [tosculi-living-items]
 stock: 0
 markup: 1.5
+dg-publish: true
 ---
 
 Shown by appointment only, three floors below the Ivory Balance. Nothing here

@@ -1,3 +1,8 @@
+---
+dg-publish: true
+completed: false
+---
+
 #SideQuest 
 
 Recruit and sustain the Cult of Marcus in the hopes that The One True Robert is able to reach Marcus in the Beyond and beseech him to return to your planes of existence once more.

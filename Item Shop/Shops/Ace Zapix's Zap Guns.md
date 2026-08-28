@@ -4,6 +4,7 @@ sources: [AC]
 categories: [Zap Gun]
 stock: 0
 markup: 1
+dg-publish: true
 ---
 
 ```dataviewjs

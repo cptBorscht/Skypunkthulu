@@ -5,6 +5,7 @@ categories: [Gear, Material, Explosive]
 excludeMechanics: [tosculi-living-items]
 stock: 0
 markup: 1
+dg-publish: true
 ---
 
 Mundane stock for people about to cross something that wants them dead:

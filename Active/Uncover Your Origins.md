@@ -1,3 +1,8 @@
+---
+dg-publish: true
+completed: false
+---
+
 #MainQuest
 
 Cirque de la Nuit must [[Unlock the Brass Capsule]] with knowledge of the past.

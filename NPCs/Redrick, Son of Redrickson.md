@@ -1,5 +1,6 @@
 ---
 Attitude: "70"
+dg-publish: true
 ---
 
 ```attitude

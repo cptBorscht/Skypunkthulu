@@ -4,6 +4,7 @@ sources: [SW]
 onlyMechanics: [tosculi-living-items]
 stock: 0
 markup: 1.2
+dg-publish: true
 ---
 
 A tosculi hive-stall behind a resin curtain, and the only place in Goa Zo that

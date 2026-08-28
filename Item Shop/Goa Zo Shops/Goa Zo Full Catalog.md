@@ -1,9 +1,11 @@
 ---
 shop: Goa Zo Full Catalog (Southlands Worldbook)
-sources: [SW]
+sources:
+  - SW
 excludeMechanics: []
 stock: 0
 markup: 1
+dg-publish: false
 ---
 ``
 DM reference: every Southlands Worldbook item at book price, split across the

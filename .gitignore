@@ -2,3 +2,8 @@
 .obsidian/workspace-mobile.json
 .obsidian/cache/
 .trash/
+.github-garden-token.txt
+.obsidian/plugins/digitalgarden/data.json
+
+# DM-only notes: secrets, never leave this machine
+DM/

@@ -7,6 +7,7 @@ excludeMechanics: [tosculi-living-items]
 stock: 8
 seed: longmarket
 markup: 1.2
+dg-publish: true
 ---
 
 Goa Zo's open-air stalls: charms, sandals, headrests, and everyday enchantments

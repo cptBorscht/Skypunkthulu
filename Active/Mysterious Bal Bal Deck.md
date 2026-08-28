@@ -1,3 +1,8 @@
+---
+dg-publish: true
+completed: false
+---
+
 #SideQuest 
 
 Unlock the mysterious powers of the Bal Bal deck by identifying the power level of each card (putting them in correct order)

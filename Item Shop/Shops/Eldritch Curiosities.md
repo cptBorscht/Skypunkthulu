@@ -6,6 +6,7 @@ categories: []
 stock: 12
 seed: backroom
 markup: 1
+dg-publish: true
 ---
 
 A cramped occult shop — a rotating dozen items appear each real-world day.

@@ -1,5 +1,6 @@
 ---
 Attitude: 95
+dg-publish: true
 ---
 
 ```attitude

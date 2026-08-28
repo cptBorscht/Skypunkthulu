@@ -6,6 +6,7 @@ categories:
   - Ship Upgrade
 stock: 0
 markup: 1
+dg-publish: true
 ---
 
 House note: eldritch blimps never suffer encumbrance; eldritch spellthrust

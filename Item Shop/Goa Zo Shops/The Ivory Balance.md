@@ -6,6 +6,7 @@ rarities: [rare]
 excludeMechanics: [tosculi-living-items]
 stock: 0
 markup: 1.15
+dg-publish: true
 ---
 
 A merchant house with a scale of carved ivory in the window and a ledger for

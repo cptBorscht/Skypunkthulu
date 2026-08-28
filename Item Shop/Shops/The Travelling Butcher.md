@@ -5,6 +5,7 @@ onlyMechanics: [mythos-monsters]
 excludeMechanics: []
 stock: 0
 markup: 1
+dg-publish: true
 ---
 
 A cart that smells wrong. Everything here summons, creates, or controls

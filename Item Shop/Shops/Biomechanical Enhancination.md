@@ -6,6 +6,7 @@ categories:
   - Bionic
 stock: 0
 markup: 1
+dg-publish: true
 ---
 
 ```dataviewjs
