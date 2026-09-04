@@ -1,6 +1,7 @@
 ---
 dg-publish: true
 completed: true
+hideInGraph: true
 ---
 
 

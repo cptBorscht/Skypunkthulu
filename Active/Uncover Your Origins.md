@@ -5,12 +5,12 @@ completed: false
 
 #MainQuest
 
-Cirque de la Nuit must [[Unlock the Brass Capsule]] with knowledge of the past.
+Cirque de la Nuit must [[Confirm The Isle of Celest]] now that they have identified its location!
 
 Keid, discover the nature of your peoples and your new Patron to reveal insights about your destiny. His powers unleashed it, now  [[Where's the Collosus Going]]? 
 
 Quinn, uncover the details of your kidnapping;  The kidnappers were *informed*, but by whom, and to what end - maybe if you [[Research the Occulare]], more will be revealed.
 
-Kovo, having conquered the darkness within not once but twice, it is time to [[Find Kovo's Hidden Stash]] and discover the nature of your Shifter powers and what caused the destruction of Kovo's village near Goa Zo.
+Kovo, having found your stash, it is time to discover the nature of your Shifter powers and what caused the destruction of Kovo's village near Goa Zo.  [[What Does the Flute Do]]?
 
-[[Dream-Priestess Fiona]] left 3 books with Elba as they parted ways in Ventissa, narrowly ensuring Elba's escape (with Chaingang Willy and Pirote's help).
+[[Active/Read Fiona's Books|Read Fiona's Books]]! She left 3 books with Elba as they parted ways in Ventissa, narrowly ensuring Elba's escape (with Chaingang Willy and Pirote's help).
