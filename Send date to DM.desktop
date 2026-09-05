@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Send campaign date to DM
+Comment=Push the campaign date note up to the DM
+Exec=konsole -e bash "/home/deck/cthulu/calendar/Skypunkthulu/Send date to DM.sh"
+Icon=git
+Terminal=false
+Categories=Utility;

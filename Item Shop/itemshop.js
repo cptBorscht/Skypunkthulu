@@ -167,7 +167,26 @@ var ItemShop = (function () {
  * named by `calendar:` (default "Skyaian"), so stock turns over when the campaign
  * date advances, not when the real-world day does. Falls back to the system date
  * if Calendarium isn't installed or that calendar doesn't exist. */
-function worldDate(name) {
+function worldDate(name, dvRef) {
+  /* Shared date first: a note with `campaign_date: true` (see Campaign Date.md)
+   * travels with git, so both machines rotate stock from the same day even
+   * though each keeps its own Calendarium file. */
+  try {
+    var notes = dvRef ? dvRef.pages().where(function (p) { return p.campaign_date === true; }).array() : [];
+    if (notes.length > 0) {
+      var n = notes[0];
+      var y = Number(n.cal_year), m = Number(n.cal_month), dd = Number(n.cal_day);
+      if ([y, m, dd].every(function (v) { return Number.isFinite(v); })) {
+        var key = y + "-" + (m - 1) + "-" + dd;
+        var lbl = null;
+        try {
+          var capi = app.plugins.getPlugin("calendarium").api.getAPI(name);
+          lbl = capi.toDisplayDate({ year: y, month: m - 1, day: dd });
+        } catch (e) { lbl = null; }
+        return { key: key, label: lbl || (n.cal_label ? String(n.cal_label) : dd + "/" + m + "/" + y) };
+      }
+    }
+  } catch (e) { /* fall through to Calendarium */ }
   try {
     var api = (typeof window !== "undefined" && window.Calendarium) || app.plugins.getPlugin("calendarium").api;
     var cal = api.getAPI(name);
@@ -243,7 +262,7 @@ async function itemShopMain(dv, input) {
     }
   }
 
-  var today = worldDate(cfg.calendar);
+  var today = worldDate(cfg.calendar, dv);
   var shop = ItemShop.buildShop(data, cfg, today.key);
 
   var head = root.createEl("div");

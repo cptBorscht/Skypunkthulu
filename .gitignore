@@ -13,3 +13,6 @@ Fleet/README.md
 
 # Airships PDF
 **/*Airship_Campaigns_Final_V7.1*
+# Calendarium is per-machine: the DM copy holds secret events
+.obsidian/plugins/calendarium/data.json
+.obsidian/plugins/calendarium/data.json.local-backup
