@@ -5,7 +5,7 @@ captain:
 assignment: with-party
 hull_hp: 700
 condition: 4
-crew_quality: 3
+crew_quality: 1
 crew_feats:
   - Cannon Experts
 ---

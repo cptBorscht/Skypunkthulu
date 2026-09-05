@@ -60,27 +60,27 @@
     ],
     "crewQuality": {
       "1": {
-        "label": "Green",
-        "mod": -2
+        "label": "Shaky",
+        "mod": 0
       },
       "2": {
-        "label": "Shaky",
-        "mod": -1
+        "label": "Capable",
+        "mod": 1
       },
       "3": {
-        "label": "Average",
-        "mod": 0
+        "label": "Good",
+        "mod": 2
       },
       "4": {
         "label": "Veteran",
-        "mod": 1
+        "mod": 3
       },
       "5": {
         "label": "Elite",
-        "mod": 2
+        "mod": 4
       }
     },
-    "crewQualityNote": "crew_quality is 1 to 5, 5 best. The label and the Gunnery modifier come from it. Gunnery is added to every weapon attack on the kit list and nothing else.",
+    "crewQualityNote": "crew_quality is 1 to 5, 5 best. A crew starts Shaky. The label and the Gunnery bonus come from it; Gunnery is never negative and is added to every weapon attack on the kit list.",
     "conditions": [
       {
         "value": 5,
@@ -108,7 +108,8 @@
         "note": "Barely holding together."
       }
     ],
-    "conditionNote": "condition is 1 to 5, 5 best, set by hand from how the ship has been treated in play. Independent of hull HP.",
+    "conditionPenaltyPct": 5,
+    "conditionNote": "condition is 1 to 5, 5 best, set by hand from how the ship has been treated in play. Each point below 5 knocks 5% off the ship's max hull HP.",
     "speedNote": "Speed is a 1 to 5 scale, kept in the JSON for reference. Cargo hulls cap at 3. Adding an engine to a Shoal raises it to its cap.",
     "reference": [
       "Spelldriving: a Spell Jet Thruster or Spell Cannon needs a spellcaster at it. The rest of the crew minimum can be deckhands.",

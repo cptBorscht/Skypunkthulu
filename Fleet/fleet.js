@@ -95,6 +95,15 @@ var Fleet = (function () {
     return { value: entry.value, name: entry.name, note: entry.note || "", max: max };
   }
 
+  // Max hull HP after condition: each point below the top knocks off
+  // rules.conditionPenaltyPct percent (5% by default).
+  function effectiveMax(data, ship, cond) {
+    var pct = num(data.rules.conditionPenaltyPct, 5);
+    if (cond.value === null) return ship.hullMax;
+    var missing = Math.max(0, cond.max - cond.value);
+    return Math.round(ship.hullMax * (1 - (pct * missing) / 100));
+  }
+
   function featSlots(data) {
     var lvl = num(data.rules.partyLevel, 1);
     var slots = 0;
@@ -186,7 +195,8 @@ var Fleet = (function () {
     var cond = condition(data, fm);
     var feats = crewFeats(data, fm);
     var asg = assignment(data, fm);
-    var hp = num(fm.hull_hp, ship.hullMax);
+    var maxHp = effectiveMax(data, ship, cond);
+    var hp = Math.min(num(fm.hull_hp, maxHp), maxHp);
 
     // Identity line
     var head = [];
@@ -196,8 +206,9 @@ var Fleet = (function () {
 
     // Cards: the numbers you reach for at the table
     var grid = cardGrid(dv.container);
-    card(grid, "Hull HP", hp + " / " + ship.hullMax);
-    card(grid, "Condition", cond.name, cond.value === null ? cond.note : cond.value + " / " + cond.max + " · " + cond.note);
+    card(grid, "Hull HP", hp + " / " + maxHp, maxHp < ship.hullMax ? ship.hullMax + " at Pristine" : "");
+    card(grid, "Condition", cond.name, cond.value === null ? cond.note
+      : cond.value + " / " + cond.max + (maxHp < ship.hullMax ? " · max HP -" + (ship.hullMax - maxHp) : "") + " · " + cond.note);
     card(grid, "Crew", gun.label, gun.value === null ? "set crew_quality 1 to 5" : gun.value + " / " + gun.max);
     card(grid, "Gunnery", signed(gun.mod), "from crew, added to attacks");
     card(grid, "AC", ship.ac);
@@ -285,11 +296,12 @@ var Fleet = (function () {
       var cond = condition(data, fm);
       var feats = crewFeats(data, fm);
       var asg = assignment(data, fm);
+      var maxHp = effectiveMax(data, ship, cond);
       return [
         p.file.link,
         fm.captain ? String(fm.captain) : "*unassigned*",
         asg.label,
-        num(fm.hull_hp, ship.hullMax) + " / " + ship.hullMax,
+        Math.min(num(fm.hull_hp, maxHp), maxHp) + " / " + maxHp,
         cond.name,
         gun.label + " (" + signed(gun.mod) + ")",
         ship.trackFeats === false ? "*not tracked*" : (feats.chosen.length ? feats.chosen.map(function (f) { return f.name; }).join(", ") : "—"),
