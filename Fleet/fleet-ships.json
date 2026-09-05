@@ -2,65 +2,166 @@
   "rules": {
     "partyLevel": 6,
     "crewFeatSlots": [
-      { "minLevel": 1,  "feats": 1 },
-      { "minLevel": 5,  "feats": 2 },
-      { "minLevel": 11, "feats": 3 },
-      { "minLevel": 17, "feats": 4 }
+      {
+        "minLevel": 1,
+        "feats": 1
+      },
+      {
+        "minLevel": 5,
+        "feats": 2
+      },
+      {
+        "minLevel": 11,
+        "feats": 3
+      },
+      {
+        "minLevel": 17,
+        "feats": 4
+      }
     ],
     "crewFeatNote": "Airship Campaigns p. 51. Training a feat takes ten workweeks minus the training officer's CHA modifier, at 5 gp per crew member per workweek.",
     "crewFeats": [
-      { "name": "Ballista Experts", "summary": "No long-range disadvantage with ballistae. A ballista needs 2 crew instead of 3. +2 to a ballista attack on a turn the ship did not move." },
-      { "name": "Cannon Experts", "summary": "No long-range disadvantage with light or heavy cannons. Light cannon needs 2 crew, heavy needs 3. Captain may take -5 to hit for +10 damage on a cannon attack." },
-      { "name": "Combat Experts", "summary": "When boarding and not incapacitated or surprised, the crew's first turn bonus action is a group attack against a hostile crew." },
-      { "name": "Dedicated", "summary": "Needs an attuned character with CHA 13+. Charisma checks to avoid crew fatigue are made at advantage." },
-      { "name": "Defensive Manoeuvres", "summary": "With half crew or more aboard, the ship's components get +2 AC and +2 to DEX saves." },
-      { "name": "Exceptional Teamwork", "summary": "One d6 Teamwork die per day, added to one attack roll or saving throw by the crew or the ship, decided after the d20 but before the result." },
-      { "name": "Highly Disciplined", "summary": "The ship and its officers ignore Boost Morale complications." },
-      { "name": "Lookouts", "summary": "With half crew or more: +5 initiative, crew passive Perception 12, the ship can't be surprised, and unseen attackers get no advantage." },
-      { "name": "Take Cover", "summary": "Area effects that allow a DEX save for half instead do nothing on a success and half on a failure, while the crew is aboard." }
+      {
+        "name": "Ballista Experts",
+        "summary": "No long-range disadvantage with ballistae. A ballista needs 2 crew instead of 3. +2 to a ballista attack on a turn the ship did not move."
+      },
+      {
+        "name": "Cannon Experts",
+        "summary": "No long-range disadvantage with light or heavy cannons. Light cannon needs 2 crew, heavy needs 3. Captain may take -5 to hit for +10 damage on a cannon attack."
+      },
+      {
+        "name": "Combat Experts",
+        "summary": "When boarding and not incapacitated or surprised, the crew's first turn bonus action is a group attack against a hostile crew."
+      },
+      {
+        "name": "Dedicated",
+        "summary": "Needs an attuned character with CHA 13+. Charisma checks to avoid crew fatigue are made at advantage."
+      },
+      {
+        "name": "Defensive Manoeuvres",
+        "summary": "With half crew or more aboard, the ship's components get +2 AC and +2 to DEX saves."
+      },
+      {
+        "name": "Exceptional Teamwork",
+        "summary": "One d6 Teamwork die per day, added to one attack roll or saving throw by the crew or the ship, decided after the d20 but before the result."
+      },
+      {
+        "name": "Highly Disciplined",
+        "summary": "The ship and its officers ignore Boost Morale complications."
+      },
+      {
+        "name": "Lookouts",
+        "summary": "With half crew or more: +5 initiative, crew passive Perception 12, the ship can't be surprised, and unseen attackers get no advantage."
+      },
+      {
+        "name": "Take Cover",
+        "summary": "Area effects that allow a DEX save for half instead do nothing on a success and half on a failure, while the crew is aboard."
+      }
     ],
-    "gunnery": {
-      "-2": "Poor", "-1": "Shaky", "0": "Average", "1": "Good", "2": "Veteran", "3": "Elite"
+    "crewQuality": {
+      "1": {
+        "label": "Green",
+        "mod": -2
+      },
+      "2": {
+        "label": "Shaky",
+        "mod": -1
+      },
+      "3": {
+        "label": "Average",
+        "mod": 0
+      },
+      "4": {
+        "label": "Veteran",
+        "mod": 1
+      },
+      "5": {
+        "label": "Elite",
+        "mod": 2
+      }
     },
-    "gunneryNote": "Gunnery is the crew quality modifier. It is added to every weapon attack on the kit list. Nothing else uses it.",
+    "crewQualityNote": "crew_quality is 1 to 5, 5 best. The label and the Gunnery modifier come from it. Gunnery is added to every weapon attack on the kit list and nothing else.",
     "conditions": [
-      { "name": "Pristine", "note": "Fresh from the yard." },
-      { "name": "Sound",    "note": "Battle-ready." },
-      { "name": "Worn",     "note": "Creaks and leaks. Repairs advised." },
-      { "name": "Damaged",  "note": "Needs a shipwright." },
-      { "name": "Crippled", "note": "Barely holding together." }
+      {
+        "value": 5,
+        "name": "Pristine",
+        "note": "Fresh from the yard."
+      },
+      {
+        "value": 4,
+        "name": "Sound",
+        "note": "Battle-ready."
+      },
+      {
+        "value": 3,
+        "name": "Worn",
+        "note": "Creaks and leaks. Repairs advised."
+      },
+      {
+        "value": 2,
+        "name": "Damaged",
+        "note": "Needs a shipwright."
+      },
+      {
+        "value": 1,
+        "name": "Crippled",
+        "note": "Barely holding together."
+      }
     ],
-    "conditionNote": "Condition is set by hand from how the ship has been treated in play. It is independent of hull HP.",
-    "speedNote": "Speed is a 1 to 5 scale. Cargo hulls cap at 3. Adding an engine to a Shoal raises it to its cap. Spelldriving engines are not yet factored beyond that.",
+    "conditionNote": "condition is 1 to 5, 5 best, set by hand from how the ship has been treated in play. Independent of hull HP.",
+    "speedNote": "Speed is a 1 to 5 scale, kept in the JSON for reference. Cargo hulls cap at 3. Adding an engine to a Shoal raises it to its cap.",
     "reference": [
       "Spelldriving: a Spell Jet Thruster or Spell Cannon needs a spellcaster at it. The rest of the crew minimum can be deckhands.",
       "Crew minimums on the kit list are the book numbers, kept for reference. Who is actually at what is handled on the map.",
       "Engine Class is the book's speed and altitude tier. Class 1 is slow and low, Class 2 is standard."
     ]
   },
-
   "assignmentNote": "A ship note's `assignment` property names one of these by id. Free text still works, it just unlocks nothing. Shops opt in with a `fleetUnlock` property naming an assignment id; `mode: full` lifts a shop's stock limit while the assignment is active.",
   "assignments": [
-    { "id": "with-party", "label": "With the party",
-      "note": "The ship goes where the party goes. Only whatever port they are in is open." },
-    { "id": "docked", "label": "Docked",
-      "note": "Tied up in port. Crew on shore leave, ship available for repairs and refits." },
-    { "id": "goa-zo-run", "label": "Goa Zo trade run",
+    {
+      "id": "with-party",
+      "label": "With the party",
+      "note": "The ship goes where the party goes. Only whatever port they are in is open."
+    },
+    {
+      "id": "docked",
+      "label": "Docked",
+      "note": "Tied up in port. Crew on shore leave, ship available for repairs and refits."
+    },
+    {
+      "id": "goa-zo-run",
+      "label": "Goa Zo trade run",
       "note": "Ferrying goods to and from Goa Zo. The Goa Zo storefronts are reachable wherever the crew is.",
       "unlocks": [
-        { "shop": "Item Shop/Goa Zo Shops/The Long Market" },
-        { "shop": "Item Shop/Goa Zo Shops/The Salt Road Provisioner" },
-        { "shop": "Item Shop/Goa Zo Shops/The Ivory Balance" },
-        { "shop": "Item Shop/Goa Zo Shops/The Chirurgeon's Hollow" },
-        { "shop": "Item Shop/Goa Zo Shops/The Sealed Vault" }
-      ] },
-    { "id": "society-contract", "label": "Eldritch Society contract",
+        {
+          "shop": "Item Shop/Goa Zo Shops/The Long Market"
+        },
+        {
+          "shop": "Item Shop/Goa Zo Shops/The Salt Road Provisioner"
+        },
+        {
+          "shop": "Item Shop/Goa Zo Shops/The Ivory Balance"
+        },
+        {
+          "shop": "Item Shop/Goa Zo Shops/The Chirurgeon's Hollow"
+        },
+        {
+          "shop": "Item Shop/Goa Zo Shops/The Sealed Vault"
+        }
+      ]
+    },
+    {
+      "id": "society-contract",
+      "label": "Eldritch Society contract",
       "note": "Running errands for the Society. Their emporium opens its whole back room.",
       "unlocks": [
-        { "shop": "Item Shop/Shops/The Eldritch Society Emporium", "mode": "full" }
-      ] }
+        {
+          "shop": "Item Shop/Shops/The Eldritch Society Emporium",
+          "mode": "full"
+        }
+      ]
+    }
   ],
-
   "ships": [
     {
       "id": "unpronounceable",
@@ -69,24 +170,76 @@
       "role": "Warship",
       "inventory": "[[The-Unpronounceable|Ship inventory]]",
       "capacity": 40,
-      "str": 24, "dex": 4, "con": 20,
+      "str": 24,
+      "dex": 4,
+      "con": 20,
       "hullMax": 700,
       "ac": 15,
       "engineClass": 2,
       "speed": 4,
       "speedMax": 5,
       "decks": [
-        { "level": 1, "rooms": ["Gun Deck", "Cannon Half-decks", "Helm (under back gun)"] },
-        { "level": 2, "rooms": ["Barracks", "Mess Hall", "Galley", "Player Choice (undecided)", "Sick Bay"] },
-        { "level": 3, "rooms": ["Engine Room", "Storage"] }
+        {
+          "level": 1,
+          "rooms": [
+            "Gun Deck",
+            "Cannon Half-decks",
+            "Helm (under back gun)"
+          ]
+        },
+        {
+          "level": 2,
+          "rooms": [
+            "Barracks",
+            "Mess Hall",
+            "Galley",
+            "Player Choice (undecided)",
+            "Sick Bay"
+          ]
+        },
+        {
+          "level": 3,
+          "rooms": [
+            "Engine Room",
+            "Storage"
+          ]
+        }
       ],
       "kit": [
-        { "name": "Heavy Cannon", "count": 2, "kind": "weapon", "where": "L1 Gun Deck", "crewMin": 3,
-          "attack": 6, "damage": "12d10 (66) bludgeoning", "range": "800/3,200 ft." },
-        { "name": "Light Cannon", "count": 3, "kind": "weapon", "where": "L1 Cannon Half-decks", "crewMin": 2,
-          "attack": 6, "damage": "8d10 (44) bludgeoning", "range": "600/2,400 ft." },
-        { "name": "Spell Cannon", "count": 1, "kind": "weapon", "where": "L3 Engine Room", "crewMin": "3, one a spellcaster" },
-        { "name": "Spell Jet Thruster", "count": 2, "kind": "engine", "where": "L3 Engine Room", "crewMin": "1 spelldriver each" }
+        {
+          "name": "Heavy Cannon",
+          "count": 2,
+          "kind": "weapon",
+          "where": "L1 Gun Deck",
+          "crewMin": 3,
+          "attack": 6,
+          "damage": "12d10 (66) bludgeoning",
+          "range": "800/3,200 ft."
+        },
+        {
+          "name": "Light Cannon",
+          "count": 3,
+          "kind": "weapon",
+          "where": "L1 Cannon Half-decks",
+          "crewMin": 2,
+          "attack": 6,
+          "damage": "8d10 (44) bludgeoning",
+          "range": "600/2,400 ft."
+        },
+        {
+          "name": "Spell Cannon",
+          "count": 1,
+          "kind": "weapon",
+          "where": "L3 Engine Room",
+          "crewMin": "3, one a spellcaster"
+        },
+        {
+          "name": "Spell Jet Thruster",
+          "count": 2,
+          "kind": "engine",
+          "where": "L3 Engine Room",
+          "crewMin": "1 spelldriver each"
+        }
       ]
     },
     {
@@ -97,24 +250,60 @@
       "role": "Cargo",
       "inventory": "[[The-Charlie-Sheen|Ship inventory]]",
       "capacity": null,
-      "str": 24, "dex": 4, "con": 22,
+      "str": 24,
+      "dex": 4,
+      "con": 22,
       "hullMax": 1000,
       "ac": 15,
       "engineClass": 1,
       "speed": 2,
       "speedMax": 3,
       "decks": [
-        { "level": 1, "rooms": ["Deck", "Helm"] },
-        { "level": 2, "rooms": ["Large Storage", "Stables", "Quarters"] },
-        { "level": 3, "rooms": ["Engine Bay", "Primitive Smuggler's Hold", "Sick Bay"] }
+        {
+          "level": 1,
+          "rooms": [
+            "Deck",
+            "Helm"
+          ]
+        },
+        {
+          "level": 2,
+          "rooms": [
+            "Large Storage",
+            "Stables",
+            "Quarters"
+          ]
+        },
+        {
+          "level": 3,
+          "rooms": [
+            "Engine Bay",
+            "Primitive Smuggler's Hold",
+            "Sick Bay"
+          ]
+        }
       ],
       "kit": [
-        { "name": "Propeller Engine", "count": 2, "kind": "engine", "where": "Port and Starboard, L3 Stern", "crewMin": 0 },
-        { "name": "Spell Jet Thruster", "count": 1, "kind": "engine", "where": "Stern, L3 Stern 1", "crewMin": "1 spelldriver" }
+        {
+          "name": "Propeller Engine",
+          "count": 2,
+          "kind": "engine",
+          "where": "Port and Starboard, L3 Stern",
+          "crewMin": 0
+        },
+        {
+          "name": "Spell Jet Thruster",
+          "count": 1,
+          "kind": "engine",
+          "where": "Stern, L3 Stern 1",
+          "crewMin": "1 spelldriver"
+        }
       ],
       "emptyMounts": [
-        "Port L1 Bow 1", "Port L1 Bow 2",
-        "Starboard L1 Bow 1", "Starboard L1 Bow 2",
+        "Port L1 Bow 1",
+        "Port L1 Bow 2",
+        "Starboard L1 Bow 1",
+        "Starboard L1 Bow 2",
         "Stern L1 Stern 2"
       ]
     }

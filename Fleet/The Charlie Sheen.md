@@ -4,9 +4,8 @@ ship_id: charlie-sheen
 captain: "[[Gwando Psychadelic]]"
 assignment: docked
 hull_hp: 1000
-condition: Sound
-crew:
-crew_quality: 0
+condition: 4
+crew_quality: 3
 crew_feats: []
 ---
 

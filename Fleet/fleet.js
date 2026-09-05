@@ -8,12 +8,11 @@
  * changes, as flat properties:
  *
  *   ship_id: unpronounceable      which block in the JSON
- *   captain: "[[Quinn]]"          text or a link
+ *   captain: "[[Quinn]]"          text or a link (fleet table only)
  *   assignment: goa-zo-run        an assignment id from the JSON, or free text
  *   hull_hp: 700                  current hull points
- *   condition: Worn               set by hand, one of the JSON conditions
- *   crew: 18                      heads aboard
- *   crew_quality: 2               -2 Poor .. +3 Elite; shown as Gunnery
+ *   condition: 4                  1 to 5, 5 best (Crippled .. Pristine)
+ *   crew_quality: 3               1 to 5, 5 best (Green .. Elite); drives Gunnery
  *   crew_feats:                   list of crew feat names from the JSON
  *     - Cannon Experts
  *
@@ -57,17 +56,43 @@ var Fleet = (function () {
 
   // ---- State --------------------------------------------------------------
 
-  function gunnery(data, fm) {
-    var q = num(fm.crew_quality, 0);
-    var label = (data.rules.gunnery || {})[String(q)] || "Crew";
-    return { mod: q, label: label, text: signed(q) + " " + label };
+  // crew_quality 1..5 -> label + Gunnery modifier, from rules.crewQuality.
+  function crewQuality(data, fm) {
+    var table = data.rules.crewQuality || {};
+    var keys = Object.keys(table).map(Number).sort(function (a, b) { return a - b; });
+    var max = keys[keys.length - 1] || 5;
+    var raw = fm.crew_quality;
+    var q = null;
+    if (typeof raw === "number") q = raw;
+    else if (typeof raw === "string" && raw.trim() !== "") {
+      var n = Number(raw.trim());
+      if (!Number.isNaN(n)) q = n;
+      else {
+        var hit = keys.find(function (k) { return table[String(k)].label.toLowerCase() === raw.trim().toLowerCase(); });
+        if (hit !== undefined) q = hit;
+      }
+    }
+    if (q === null) return { value: null, label: "Unset", mod: 0, max: max };
+    q = Math.max(keys[0], Math.min(max, Math.round(q)));
+    var e = table[String(q)] || { label: "Crew", mod: 0 };
+    return { value: q, label: e.label, mod: num(e.mod, 0), max: max };
   }
 
+  // condition 1..5 (or a name) -> entry from rules.conditions.
   function condition(data, fm) {
-    var raw = fm.condition ? String(fm.condition).trim() : "";
-    if (!raw) return { name: "Unset", note: "Set `condition` in the note's properties." };
-    var entry = (data.rules.conditions || []).find(function (c) { return c.name.toLowerCase() === raw.toLowerCase(); });
-    return entry || { name: raw, note: "" };
+    var conds = data.rules.conditions || [];
+    var max = conds.reduce(function (m, c) { return Math.max(m, num(c.value, 0)); }, 0) || 5;
+    var raw = fm.condition;
+    var entry = null;
+    if (typeof raw === "number") entry = conds.find(function (c) { return c.value === Math.round(raw); });
+    else if (typeof raw === "string" && raw.trim() !== "") {
+      var n = Number(raw.trim());
+      entry = !Number.isNaN(n)
+        ? conds.find(function (c) { return c.value === Math.round(n); })
+        : conds.find(function (c) { return c.name.toLowerCase() === raw.trim().toLowerCase(); });
+    }
+    if (!entry) return { value: null, name: "Unset", note: "Set condition 1 to 5 in the note's properties.", max: max };
+    return { value: entry.value, name: entry.name, note: entry.note || "", max: max };
   }
 
   function featSlots(data) {
@@ -120,6 +145,13 @@ var Fleet = (function () {
     return el;
   }
 
+  function section(container, title) {
+    var el = container.createEl("div", { text: title });
+    el.style.cssText = "font-size:.72em;text-transform:uppercase;letter-spacing:.06em;opacity:.7;" +
+      "margin:1rem 0 .25rem;padding-bottom:.15rem;border-bottom:1px solid var(--background-modifier-border);";
+    return el;
+  }
+
   function cardGrid(container) {
     var grid = container.createEl("div");
     grid.style.cssText = "display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0;";
@@ -150,46 +182,42 @@ var Fleet = (function () {
       return;
     }
 
-    var gun = gunnery(data, fm);
+    var gun = crewQuality(data, fm);
     var cond = condition(data, fm);
     var feats = crewFeats(data, fm);
     var asg = assignment(data, fm);
     var hp = num(fm.hull_hp, ship.hullMax);
-    var crew = num(fm.crew, null);
 
     // Identity line
     var head = [];
     if (ship.fullName) head.push("*" + ship.fullName + "*");
-    var bits = [ship.hull + (ship.role ? ", " + ship.role.toLowerCase() : ""), "Engine Class " + ship.engineClass];
-    if (ship.inventory) bits.push(ship.inventory);
-    head.push(bits.join(" · "));
-    head.push("**Captain:** " + (fm.captain ? String(fm.captain) : "*unassigned*"));
+    head.push(ship.hull + (ship.role ? ", " + ship.role.toLowerCase() : "") + " · Engine Class " + ship.engineClass);
     dv.paragraph(head.join("  \n"));
 
     // Cards: the numbers you reach for at the table
     var grid = cardGrid(dv.container);
     card(grid, "Hull HP", hp + " / " + ship.hullMax);
-    card(grid, "Condition", cond.name, cond.note);
-    card(grid, "Gunnery", signed(gun.mod), gun.label + " crew");
-    card(grid, "Speed", (ship.speed !== undefined ? ship.speed : "?") + " / " + num(ship.speedMax, 5));
+    card(grid, "Condition", cond.name, cond.value === null ? cond.note : cond.value + " / " + cond.max + " · " + cond.note);
+    card(grid, "Crew", gun.label, gun.value === null ? "set crew_quality 1 to 5" : gun.value + " / " + gun.max);
+    card(grid, "Gunnery", signed(gun.mod), "from crew, added to attacks");
     card(grid, "AC", ship.ac);
-    card(grid, "Crew", crew === null ? "?" : crew, ship.capacity ? "of " + ship.capacity : "");
     card(grid, "STR", ship.str);
     card(grid, "DEX", ship.dex);
     card(grid, "CON", ship.con);
 
     // Assignment and what it opens
-    var asgLine = "**Assignment:** " + asg.label + (asg.note ? " — " + asg.note : "");
-    if (asg.unlocks.length > 0) asgLine += "  \n**Opens:** " + unlockText(asg.unlocks);
+    section(dv.container, "Assignment");
+    var asgLine = "**" + asg.label + "**" + (asg.note ? " — " + asg.note : "");
+    if (asg.unlocks.length > 0) asgLine += "  \nOpens: " + unlockText(asg.unlocks);
     dv.paragraph(asgLine);
 
     // Crew feats
-    var featLine = "**Crew feats** (" + feats.chosen.length + " of " + feats.slots.slots +
-      " at party level " + feats.slots.level + "): ";
+    section(dv.container, "Crew feats · " + feats.chosen.length + " of " + feats.slots.slots + " at party level " + feats.slots.level);
+    var featLine;
     if (feats.chosen.length === 0) {
-      featLine += "*none trained yet*";
+      featLine = "*none trained yet*";
     } else {
-      featLine += feats.chosen.map(function (f) {
+      featLine = feats.chosen.map(function (f) {
         return "**" + f.name + "**" + (f.unknown ? " ⚠ not in the feat list" : "") + (f.summary ? " — " + f.summary : "");
       }).join("  \n");
     }
@@ -197,7 +225,7 @@ var Fleet = (function () {
     dv.paragraph(featLine);
 
     // Kit
-    dv.header(4, "Kit");
+    section(dv.container, "Kit");
     dv.table(["Component", "Where", "Attack", "Damage", "Range", "Crew min"], kitRows(ship, gun));
     var extra = [];
     if (gun.mod !== 0) extra.push("Attacks include Gunnery " + signed(gun.mod) + ".");
@@ -205,20 +233,26 @@ var Fleet = (function () {
     if (extra.length) dv.paragraph("*" + extra.join(" ") + "*");
 
     // Layout
-    dv.paragraph("**Layout**  \n" + (ship.decks || []).map(function (d) {
-      return "Level " + d.level + ": " + (d.rooms || []).join(", ");
+    section(dv.container, "Layout");
+    dv.paragraph((ship.decks || []).map(function (d) {
+      return "**Level " + d.level + "** " + (d.rooms || []).join(", ");
     }).join("  \n"));
 
     // Reference
     var details = dv.container.createEl("details");
     details.createEl("summary", { text: "Rules reference" });
     var ul = details.createEl("ul");
-    [data.rules.gunneryNote, data.rules.conditionNote, data.rules.speedNote, data.rules.crewFeatNote]
+    [data.rules.crewQualityNote, data.rules.conditionNote, data.rules.speedNote, data.rules.crewFeatNote]
       .concat(data.rules.reference || [])
       .filter(Boolean)
       .forEach(function (line) { ul.createEl("li", { text: line }); });
     var condUl = details.createEl("ul");
-    (data.rules.conditions || []).forEach(function (c) { condUl.createEl("li", { text: c.name + ": " + (c.note || "") }); });
+    (data.rules.conditions || []).forEach(function (c) { condUl.createEl("li", { text: "Condition " + c.value + " " + c.name + ": " + (c.note || "") }); });
+    var cqUl = details.createEl("ul");
+    Object.keys(data.rules.crewQuality || {}).sort().forEach(function (k) {
+      var e = data.rules.crewQuality[k];
+      cqUl.createEl("li", { text: "Crew " + k + " " + e.label + ": Gunnery " + signed(num(e.mod, 0)) });
+    });
     var featUl = details.createEl("ul");
     (data.rules.crewFeats || []).forEach(function (f) { featUl.createEl("li", { text: f.name + ": " + f.summary }); });
     var asgUl = details.createEl("ul");
@@ -244,27 +278,24 @@ var Fleet = (function () {
     var rows = pages.map(function (p) {
       var fm = rawFrontmatter(p.file.path);
       var ship = findShip(data, fm, p.file.name);
-      if (!ship) return [p.file.link, "⚠ unknown ship_id `" + fm.ship_id + "`", "", "", "", "", "", "", ""];
-      var gun = gunnery(data, fm);
+      if (!ship) return [p.file.link, "⚠ unknown ship_id `" + fm.ship_id + "`", "", "", "", "", "", ""];
+      var gun = crewQuality(data, fm);
       var cond = condition(data, fm);
       var feats = crewFeats(data, fm);
       var asg = assignment(data, fm);
-      var crew = num(fm.crew, null);
       return [
         p.file.link,
         fm.captain ? String(fm.captain) : "*unassigned*",
         asg.label,
         num(fm.hull_hp, ship.hullMax) + " / " + ship.hullMax,
         cond.name,
-        gun.text,
-        (ship.speed !== undefined ? ship.speed : "?") + " / " + num(ship.speedMax, 5),
-        crew === null ? "?" : crew + (ship.capacity ? " / " + ship.capacity : ""),
+        gun.label + " (" + signed(gun.mod) + ")",
         feats.chosen.length ? feats.chosen.map(function (f) { return f.name; }).join(", ") : "—",
         asg.unlocks.length ? unlockText(asg.unlocks) : "—"
       ];
     }).sort(function (a, b) { return String(a[0]).localeCompare(String(b[0])); });
 
-    dv.table(["Ship", "Captain", "Assignment", "Hull HP", "Condition", "Gunnery", "Speed", "Crew", "Crew feats", "Opens"], rows);
+    dv.table(["Ship", "Captain", "Assignment", "Hull HP", "Condition", "Crew (Gunnery)", "Crew feats", "Opens"], rows);
 
     var allUnlocks = [];
     pages.forEach(function (p) {

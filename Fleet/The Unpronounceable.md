@@ -4,10 +4,10 @@ ship_id: unpronounceable
 captain: 
 assignment: with-party
 hull_hp: 700
-condition: Sound
-crew: 
-crew_quality: 0
-crew_feats: []
+condition: 4
+crew_quality: 3
+crew_feats:
+  - Cannon Experts
 ---
 
 # The Unpronounceable
