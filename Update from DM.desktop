@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Update Skypunkthulu from DM
+Comment=Pull the latest campaign notes from the DM
+Exec=konsole -e bash "/home/deck/cthulu/calendar/Skypunkthulu/Update from DM.sh"
+Icon=git
+Terminal=false
+Categories=Utility;

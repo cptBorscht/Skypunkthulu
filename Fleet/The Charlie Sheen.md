@@ -1,6 +1,7 @@
 ---
+dg-publish: true
 ship_id: charlie-sheen
-captain: 
+captain: "[[Gwando Psychadelic]]"
 assignment: 
 hull_hp: 1000
 crew: 

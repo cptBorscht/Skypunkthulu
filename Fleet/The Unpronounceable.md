@@ -1,4 +1,5 @@
 ---
+dg-publish: true
 ship_id: unpronounceable
 captain: 
 assignment: 
