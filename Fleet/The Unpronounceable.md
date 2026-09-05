@@ -1,11 +1,11 @@
 ---
 dg-publish: true
 ship_id: unpronounceable
-captain: 
+captain:
 assignment: with-party
 hull_hp: 700
 condition: 4
-crew_quality: 1
+crew_quality: 2
 crew_feats:
   - Cannon Experts
 ---
