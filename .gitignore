@@ -7,3 +7,6 @@
 
 # DM-only notes: secrets, never leave this machine
 DM/
+
+# Local how-to notes, not for the player workstation
+Fleet/README.md

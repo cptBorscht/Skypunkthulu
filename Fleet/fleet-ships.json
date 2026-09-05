@@ -1,0 +1,87 @@
+{
+  "rules": {
+    "crewQuality": {
+      "-2": "Poor", "-1": "Shaky", "0": "Average", "1": "Good", "2": "Veteran", "3": "Elite"
+    },
+    "crewQualityNote": "Crew quality is added to every component attack roll. It has no other mechanical effect.",
+    "conditions": [
+      { "name": "Pristine", "minPct": 100, "note": "Fresh from the yard." },
+      { "name": "Sound",    "minPct": 75,  "note": "Battle-ready." },
+      { "name": "Worn",     "minPct": 50,  "note": "Creaks and leaks. Repairs advised." },
+      { "name": "Damaged",  "minPct": 25,  "note": "Needs a shipwright. Speed reduced by 1.", "speedPenalty": 1 },
+      { "name": "Crippled", "minPct": 0,   "note": "Barely holding together. Speed 1, dead in the sky at 0 HP.", "speedCap": 1 }
+    ],
+    "conditionNote": "Condition is worked out from hull HP. Set `condition` in the note's properties to override it.",
+    "speedNote": "Speed is a 1 to 5 scale. Cargo hulls cap at 3. Adding an engine to a Shoal raises it to its cap. Spelldriving engines are not yet factored beyond that.",
+    "reference": [
+      "Spelldriving: a Spell Jet Thruster or Spell Cannon needs a spellcaster at the station. The rest of the crew minimum can be deckhands.",
+      "Crew minimums are the book numbers. A station below its minimum is flagged on the sheet. Treat it as disadvantage or inoperable at the table.",
+      "Engine Class is the book's speed and altitude tier. Class 1 is slow and low, Class 2 is standard."
+    ]
+  },
+  "ships": [
+    {
+      "id": "unpronounceable",
+      "name": "The Unpronounceable",
+      "hull": "Algor Cruiser (modified)",
+      "role": "Warship",
+      "inventory": "[[The-Unpronounceable|Ship inventory]]",
+      "capacity": 40,
+      "str": 24, "dex": 4, "con": 20,
+      "hullMax": 700,
+      "ac": 15,
+      "engineClass": 2,
+      "speed": 4,
+      "speedMax": 5,
+      "decks": [
+        { "level": 1, "rooms": ["Gun Deck", "Cannon Half-decks", "Helm (under back gun)"] },
+        { "level": 2, "rooms": ["Barracks", "Mess Hall", "Galley", "Player Choice (undecided)", "Sick Bay"] },
+        { "level": 3, "rooms": ["Engine Room", "Storage"] }
+      ],
+      "components": [
+        { "name": "Helm", "kind": "control", "crewMin": 1, "location": "L1, under the back gun" },
+        { "name": "Heavy Cannon", "count": 2, "kind": "weapon", "crewMin": 3, "location": "L1 Gun Deck",
+          "attack": 6, "damage": "12d10 (66)", "damageType": "bludgeoning", "range": "800/3,200 ft." },
+        { "name": "Light Cannon", "count": 3, "kind": "weapon", "crewMin": 2, "location": "L1 Cannon Half-decks",
+          "attack": 6, "damage": "8d10 (44)", "damageType": "bludgeoning", "range": "600/2,400 ft." },
+        { "name": "Spell Jet Thruster", "count": 2, "kind": "engine", "crewMin": 1, "location": "L3 Engine Room",
+          "crewNote": "spelldriver" },
+        { "name": "Spell Cannon", "count": 1, "kind": "weapon", "crewMin": 3, "location": "L3 Engine Room",
+          "crewNote": "at least one spellcaster" },
+        { "name": "Sick Bay", "kind": "support", "crewMin": 0, "location": "L2" }
+      ]
+    },
+    {
+      "id": "charlie-sheen",
+      "name": "The Charlie Sheen",
+      "fullName": "The Lil' Bit of Stripper Salt Booger Sugar Charlie Sheen Snow Blow Cocaine",
+      "hull": "Shoal",
+      "role": "Cargo",
+      "inventory": "[[The-Charlie-Sheen|Ship inventory]]",
+      "capacity": null,
+      "str": 24, "dex": 4, "con": 22,
+      "hullMax": 1000,
+      "ac": 15,
+      "engineClass": 1,
+      "speed": 2,
+      "speedMax": 3,
+      "decks": [
+        { "level": 1, "rooms": ["Deck", "Helm"] },
+        { "level": 2, "rooms": ["Large Storage", "Stables", "Quarters"] },
+        { "level": 3, "rooms": ["Engine Bay", "Primitive Smuggler's Hold", "Sick Bay"] }
+      ],
+      "components": [
+        { "name": "Helm", "kind": "control", "crewMin": 1, "location": "L1 Deck" },
+        { "name": "Propeller Engine", "count": 2, "kind": "engine", "crewMin": 0, "locations": ["Port, L3 Stern", "Starboard, L3 Stern"] },
+        { "name": "Spell Jet Thruster", "count": 1, "kind": "engine", "crewMin": 1, "location": "Stern, L3 Stern 1",
+          "crewNote": "spelldriver" },
+        { "name": "Sick Bay", "kind": "support", "crewMin": 0, "location": "L3" }
+      ],
+      "emptyMounts": [
+        "Port L1 Bow 1", "Port L1 Bow 2",
+        "Starboard L1 Bow 1", "Starboard L1 Bow 2",
+        "Stern L1 Stern 2"
+      ]
+    }
+  ]
+}
