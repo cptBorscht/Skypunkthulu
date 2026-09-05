@@ -19,7 +19,7 @@
         "feats": 4
       }
     ],
-    "crewFeatNote": "Airship Campaigns p. 51. Training a feat takes ten workweeks minus the training officer's CHA modifier, at 5 gp per crew member per workweek.",
+    "crewFeatNote": "Airship Campaigns p. 51. Training a feat takes ten workweeks minus the training officer's CHA modifier, at 5 gp per crew member per workweek. Only the party's own crew trains feats; a ship with trackFeats: false skips the section.",
     "crewFeats": [
       {
         "name": "Ballista Experts",
@@ -248,6 +248,7 @@
       "fullName": "The Lil' Bit of Stripper Salt Booger Sugar Charlie Sheen Snow Blow Cocaine",
       "hull": "Shoal",
       "role": "Cargo",
+      "trackFeats": false,
       "inventory": "[[The-Charlie-Sheen|Ship inventory]]",
       "capacity": null,
       "str": 24,

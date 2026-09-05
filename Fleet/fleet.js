@@ -211,7 +211,8 @@ var Fleet = (function () {
     if (asg.unlocks.length > 0) asgLine += "  \nOpens: " + unlockText(asg.unlocks);
     dv.paragraph(asgLine);
 
-    // Crew feats
+    // Crew feats (only for crews the party trains)
+    if (ship.trackFeats !== false) {
     section(dv.container, "Crew feats · " + feats.chosen.length + " of " + feats.slots.slots + " at party level " + feats.slots.level);
     var featLine;
     if (feats.chosen.length === 0) {
@@ -223,6 +224,7 @@ var Fleet = (function () {
     }
     if (feats.chosen.length > feats.slots.slots) featLine += "  \n⚠ Over the feat limit for this party level.";
     dv.paragraph(featLine);
+    }
 
     // Kit
     section(dv.container, "Kit");
@@ -290,7 +292,7 @@ var Fleet = (function () {
         num(fm.hull_hp, ship.hullMax) + " / " + ship.hullMax,
         cond.name,
         gun.label + " (" + signed(gun.mod) + ")",
-        feats.chosen.length ? feats.chosen.map(function (f) { return f.name; }).join(", ") : "—",
+        ship.trackFeats === false ? "*not tracked*" : (feats.chosen.length ? feats.chosen.map(function (f) { return f.name; }).join(", ") : "—"),
         asg.unlocks.length ? unlockText(asg.unlocks) : "—"
       ];
     }).sort(function (a, b) { return String(a[0]).localeCompare(String(b[0])); });
