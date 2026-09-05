@@ -2,13 +2,12 @@
 dg-publish: true
 ship_id: charlie-sheen
 captain: "[[Gwando Psychadelic]]"
-assignment: 
+assignment: docked
 hull_hp: 1000
-crew: 
+condition: Sound
+crew:
 crew_quality: 0
-stations:
-  - "Helm: "
-  - "Spell Jet Thruster: "
+crew_feats: []
 ---
 
 # The Charlie Sheen

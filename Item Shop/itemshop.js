@@ -212,6 +212,37 @@ async function itemShopMain(dv, input) {
     search: input.search !== undefined ? input.search : (fm.search !== undefined ? fm.search : true)
   };
 
+  /* Fleet hook. A shop note with `fleetUnlock: <assignment id>` is only open
+   * while some ship note's `assignment` matches that id (see fleet-ships.json).
+   * An unlock with mode "full" also lifts the stock limit for the visit. */
+  var unlockNote = null;
+  var fleetUnlock = input.fleetUnlock !== undefined ? input.fleetUnlock : fm.fleetUnlock;
+  if (fleetUnlock) {
+    try {
+      var fleetFile = app.vault.getFiles().find(function (f) { return f.name === "fleet-ships.json"; });
+      var fleet = fleetFile ? JSON.parse(await app.vault.cachedRead(fleetFile)) : { assignments: [] };
+      var wanted = String(fleetUnlock).toLowerCase();
+      var shopPath = (dv.current().file.path || "").replace(/\.md$/, "").toLowerCase();
+      var active = null;
+      dv.pages().where(function (p) { return p.ship_id !== undefined && p.ship_id !== null; }).forEach(function (p) {
+        var sfm = ((app.metadataCache.getFileCache(app.vault.getAbstractFileByPath(p.file.path)) || {}).frontmatter) || {};
+        var raw = sfm.assignment ? String(sfm.assignment).trim().toLowerCase() : "";
+        var a = (fleet.assignments || []).find(function (x) { return x.id.toLowerCase() === raw || x.label.toLowerCase() === raw; });
+        if (!a || a.id.toLowerCase() !== wanted) return;
+        var u = (a.unlocks || []).find(function (x) { return String(x.shop).replace(/\.md$/, "").toLowerCase() === shopPath; });
+        if (!u) u = { shop: shopPath };
+        if (!active || u.mode === "full") active = { unlock: u, ship: p.file.name, label: a.label };
+      });
+      if (!active) {
+        return fail("this shop is out of reach. It opens while a ship is on the \"" + fleetUnlock + "\" assignment (see the Fleet note).");
+      }
+      if (active.unlock.mode === "full") cfg.stock = 0;
+      unlockNote = "Open via " + active.ship + " (" + active.label + ")" + (active.unlock.mode === "full" ? ", full inventory" : "");
+    } catch (e) {
+      return fail("fleet check failed (" + e.message + ").");
+    }
+  }
+
   var today = worldDate(cfg.calendar);
   var shop = ItemShop.buildShop(data, cfg, today.key);
 
@@ -221,7 +252,7 @@ async function itemShopMain(dv, input) {
     ? "In stock today (" + today.label + "): " + shop.total + " of " + shop.available + " items"
     : shop.total + " items";
   head.createEl("strong", { text: cfg.shop });
-  head.createEl("span", { text: "  —  " + sub }).style.opacity = "0.7";
+  head.createEl("span", { text: "  —  " + sub + (unlockNote ? "  ·  " + unlockNote : "") }).style.opacity = "0.7";
 
   var visibleRows = [];
   if (cfg.search) {
