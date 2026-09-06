@@ -16,3 +16,6 @@ Fleet/README.md
 # Calendarium is per-machine: the DM copy holds secret events
 .obsidian/plugins/calendarium/data.json
 .obsidian/plugins/calendarium/data.json.local-backup
+
+# dm ignore scripts, game, other
+**/dm-ignore/**
