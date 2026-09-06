@@ -66,6 +66,15 @@ not when the real-world day changes, and the shop header shows the in-world date
 - Dataview renders once, so after advancing the date, reopen the note (or
   Ctrl+P → "Dataview: Force refresh all views") to see the new stock.
 
+### Today's Marvelous Curio
+
+A note with `curio: true` ignores the usual filters and shows exactly one item
+per campaign day, cycling through every item in the JSON that carries a numeric
+`curio` slot, in slot order. To put an item into the rotation, add
+`"curio": <slot number>` to its row (or add a new row with one). `curioOffset`
+in the note's frontmatter shifts which slot is up today; `markup: 0.75` gives
+the 25% discount.
+
 **Categories:** Weapon, Ammunition, Armor, Gun Mod, Explosive, Magic Item, Potion,
 Zap Gun, Bionic, Ship Upgrade, Material, Gear, Mythos Text.
 

@@ -95,6 +95,26 @@ var ItemShop = (function () {
     return picked;
   }
 
+  /* Day counter for sequential rotation. Date keys look like "1224-0-11"
+   * (year, 0-based month, day) or "2026-09-06" as the system-date fallback.
+   * Months are treated as 31 days, so a month boundary may skip a slot. */
+  function dayOrdinal(dateKey) {
+    var parts = String(dateKey).split("-").map(Number);
+    if (parts.length < 3 || parts.some(function (v) { return !Number.isFinite(v); })) return 0;
+    return parts[0] * 372 + parts[1] * 31 + parts[2];
+  }
+
+  /* Curio rotation: items carrying a numeric `curio` slot take turns, one per
+   * campaign day, in slot order. `offset` shifts which slot is up today. */
+  function pickCurio(items, dateKey, offset) {
+    var pool = items.filter(function (it) { return typeof it.curio === "number"; })
+      .sort(function (a, b) { return a.curio - b.curio; });
+    if (!pool.length) return [];
+    var idx = (dayOrdinal(dateKey) + (offset || 0)) % pool.length;
+    if (idx < 0) idx += pool.length;
+    return [pool[idx]];
+  }
+
   function sortItems(items) {
     return items.slice().sort(function (a, b) {
       if (a.category !== b.category) return a.category < b.category ? -1 : 1;
@@ -131,7 +151,13 @@ var ItemShop = (function () {
       excludeMechanics: excludeMechanics, onlyMechanics: cfg.onlyMechanics,
       maxPrice: cfg.maxPrice, rarityEstimates: data.rarityEstimates
     });
-    var stocked = pickStock(filtered, cfg.stock, (cfg.shop || "") + "|" + (cfg.seed || "") + "|" + todayIso);
+    var stocked;
+    if (cfg.curio) {
+      filtered = data.items.filter(function (it) { return typeof it.curio === "number"; });
+      stocked = pickCurio(data.items, todayIso, cfg.curioOffset);
+    } else {
+      stocked = pickStock(filtered, cfg.stock, (cfg.shop || "") + "|" + (cfg.seed || "") + "|" + todayIso);
+    }
     var groups = groupItems(sortItems(stocked)).map(function (g) {
       return {
         category: g.category,
@@ -155,12 +181,14 @@ var ItemShop = (function () {
         })
       };
     });
-    return { groups: groups, total: stocked.length, stocked: cfg.stock > 0 && cfg.stock < filtered.length, available: filtered.length };
+    return { groups: groups, total: stocked.length, stocked: !!cfg.curio || (cfg.stock > 0 && cfg.stock < filtered.length),
+             available: filtered.length, curio: !!cfg.curio };
   }
 
   return { hashSeed: hashSeed, mulberry32: mulberry32, estimatePrice: estimatePrice, fmtGp: fmtGp,
            fmtPrice: fmtPrice, fmtWeight: fmtWeight, filterItems: filterItems, pickStock: pickStock,
-           sortItems: sortItems, groupItems: groupItems, buildShop: buildShop };
+           sortItems: sortItems, groupItems: groupItems, buildShop: buildShop,
+           dayOrdinal: dayOrdinal, pickCurio: pickCurio };
 })();
 
 /* Rotation date. Reads the current in-world date from the Calendarium calendar
@@ -227,6 +255,8 @@ async function itemShopMain(dv, input) {
     stock: typeof input.stock === "number" ? input.stock : (typeof fm.stock === "number" ? fm.stock : 0),
     markup: typeof input.markup === "number" ? input.markup : (typeof fm.markup === "number" ? fm.markup : 1),
     seed: input.seed || fm.seed || "",
+    curio: input.curio !== undefined ? !!input.curio : fm.curio === true,
+    curioOffset: typeof input.curioOffset === "number" ? input.curioOffset : (typeof fm.curioOffset === "number" ? fm.curioOffset : 0),
     calendar: input.calendar || fm.calendar || "Skyaian",
     search: input.search !== undefined ? input.search : (fm.search !== undefined ? fm.search : true)
   };
@@ -267,7 +297,9 @@ async function itemShopMain(dv, input) {
 
   var head = root.createEl("div");
   head.style.margin = "0.3em 0 0.6em 0";
-  var sub = shop.stocked
+  var sub = shop.curio
+    ? "Today (" + today.label + "): 1 of " + shop.available + " curios" + (cfg.markup < 1 ? ", " + Math.round((1 - cfg.markup) * 100) + "% off" : "")
+    : shop.stocked
     ? "In stock today (" + today.label + "): " + shop.total + " of " + shop.available + " items"
     : shop.total + " items";
   head.createEl("strong", { text: cfg.shop });
